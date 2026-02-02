@@ -1,0 +1,201 @@
+/* ============================================
+   Valentine — Professional, centered aesthetics
+   ============================================ */
+
+:root {
+  --card-bg: #fefefe;
+  --card-shadow: 0 12px 40px rgba(0, 0, 0, 0.08), 0 2px 12px rgba(180, 70, 90, 0.06);
+  --card-radius: 20px;
+  --title-color: #2d1b2e;
+  --accent: #c45c7a;
+  --accent-soft: #e8a4b4;
+  --btn-yes-bg: #c45c7a;
+  --btn-yes-hover: #b04d68;
+  --btn-no-bg: #5c4d5e;
+  --btn-no-hover: #4a3d4b;
+  --transition: 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root { --transition: 0.01s; }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Cormorant Garamond", "Georgia", serif;
+  background: linear-gradient(160deg, #fdf6f8 0%, #f8eef2 40%, #f5e6ec 100%);
+  color: #2d1b2e;
+}
+
+/* Full viewport center wrapper */
+.screen {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.effects-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  background: var(--card-bg);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  max-width: 420px;
+  width: 100%;
+}
+
+.title {
+  margin: 0 0 2rem;
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  font-weight: 600;
+  color: var(--title-color);
+  letter-spacing: 0.02em;
+  line-height: 1.3;
+}
+
+.buttons-wrap {
+  position: relative;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.85rem 1.75rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  font-family: inherit;
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform var(--transition), background-color var(--transition),
+              box-shadow var(--transition);
+  letter-spacing: 0.03em;
+}
+
+.btn-yes {
+  background: var(--btn-yes-bg);
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(196, 92, 122, 0.35);
+}
+
+.btn-yes:hover,
+.btn-yes:focus-visible {
+  background: var(--btn-yes-hover);
+  box-shadow: 0 6px 20px rgba(196, 92, 122, 0.4);
+  outline: none;
+}
+
+.btn-no {
+  background: var(--btn-no-bg);
+  color: #fff;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  transition: left var(--transition), top var(--transition);
+}
+
+.btn-no:hover,
+.btn-no:focus-visible {
+  background: var(--btn-no-hover);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  outline: none;
+}
+
+.btn-no.teleporting {
+  pointer-events: none;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ========== Yes page: "I love you Muah" ========== */
+body.yes-page {
+  background: linear-gradient(165deg, #fdf2f5 0%, #fae8ed 50%, #f5dce4 100%);
+}
+
+.yes-screen {
+  min-height: 100vh;
+}
+
+.yes-card {
+  padding: 3rem 2rem;
+}
+
+.yes-title {
+  margin: 0 0 0.5rem;
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: 600;
+  color: var(--title-color);
+  letter-spacing: 0.02em;
+}
+
+.yes-muah {
+  margin: 0;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+}
+
+.yes-card .yes-title,
+.yes-card .yes-muah {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .yes-card .yes-title,
+  .yes-card .yes-muah { animation: none; }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 2rem 1.5rem;
+  }
+  .title {
+    margin-bottom: 1.5rem;
+  }
+}
