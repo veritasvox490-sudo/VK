@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will you be my Valentine?</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Main card container: semantic wrapper for the question and choices -->
+  <main class="card-container" id="card-container">
+    <!-- Canvas layer for particle/confetti effects (behind buttons) -->
+    <canvas id="effects-canvas" class="effects-canvas" aria-hidden="true"></canvas>
+
+    <article class="card" role="region" aria-labelledby="valentine-title">
+      <h1 id="valentine-title" class="title">Will you be my Valentine?</h1>
+      <p class="subtitle" aria-hidden="true">Saying &ldquo;No&rdquo; is not an option.</p>
+
+      <!-- Live region for screen readers: announces No teleport and Yes chosen -->
+      <div id="aria-live" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+      <div class="buttons-wrap">
+        <button type="button" id="btn-yes" class="btn btn-yes">
+          Yes
+        </button>
+        <button type="button" id="btn-no" class="btn btn-no">
+          No
+        </button>
+      </div>
+    </article>
+  </main>
+
+  <!-- Celebration overlay (hidden until user clicks Yes) -->
+  <div id="celebration-overlay" class="celebration-overlay" role="dialog" aria-modal="true" aria-labelledby="celebration-title" aria-hidden="true">
+    <div class="celebration-content">
+      <h2 id="celebration-title" class="celebration-title">YAY — you said YES!</h2>
+      <p class="celebration-subtitle">Thank you! &lt;3</p>
+    </div>
+  </div>
+
+  <!-- Optional: load Emscripten-generated WASM module (glue + wasm). Uncomment when built. -->
+  <!-- <script src="wasm_cpp/effects.js" type="module"></script> -->
+  <!-- Optional: load Java-transpiled effects. Uncomment when built. -->
+  <!-- <script src="java_effects/valentine_effects.js"></script> -->
+  <script src="script.js"></script>
+</body>
+</html>
